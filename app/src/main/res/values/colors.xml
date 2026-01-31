@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Apple iOS Color Palette -->
+
+    <!-- System Colors -->
+    <color name="apple_blue">#007AFF</color>
+    <color name="apple_green">#34C759</color>
+    <color name="apple_indigo">#5856D6</color>
+    <color name="apple_orange">#FF9500</color>
+    <color name="apple_pink">#FF2D55</color>
+    <color name="apple_purple">#AF52DE</color>
+    <color name="apple_red">#FF3B30</color>
+    <color name="apple_teal">#5AC8FA</color>
+    <color name="apple_yellow">#FFCC00</color>
+
+    <!-- Gray Colors -->
+    <color name="apple_gray">#8E8E93</color>
+    <color name="apple_gray2">#AEAEB2</color>
+    <color name="apple_gray3">#C7C7CC</color>
+    <color name="apple_gray4">#D1D1D6</color>
+    <color name="apple_gray5">#E5E5EA</color>
+    <color name="apple_gray6">#F2F2F7</color>
+
+    <!-- Label Colors -->
+    <color name="label_primary">#000000</color>
+    <color name="label_secondary">#3C3C43</color>
+    <color name="label_tertiary">#3C3C43</color>
+    <color name="label_quaternary">#3C3C43</color>
+
+    <!-- Background Colors -->
+    <color name="background_primary">#FFFFFF</color>
+    <color name="background_secondary">#F2F2F7</color>
+    <color name="background_tertiary">#FFFFFF</color>
+
+    <!-- Fill Colors -->
+    <color name="fill_primary">#78788033</color>
+    <color name="fill_secondary">#78788028</color>
+    <color name="fill_tertiary">#7676801E</color>
+    <color name="fill_quaternary">#74748014</color>
+
+    <!-- Separator Colors -->
+    <color name="separator">#3C3C4349</color>
+    <color name="separator_opaque">#C6C6C8</color>
+
+    <!-- Standard Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+</resources>
