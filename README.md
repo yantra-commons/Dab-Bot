@@ -2,399 +2,386 @@
 
 <div align="center">
 
-![DabBot Logo](docs/images/logo.png)
+**Transform any button or switch into a smart device**
 
-**Open-source Bluetooth-controlled servo motor for automated button pressing**
+Control physical buttons remotely with your Android phone via Bluetooth
 
-[![Download APK](https://img.shields.io/badge/Download-APK-blue.svg)](https://drive.google.com/file/d/1eNxBlgz88abVft-SN3fXUSu5Ly24oAsl/view?usp=sharing)
+[![Download APK](https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android)](https://drive.google.com/file/d/1eNxBlgz88abVft-SN3fXUSu5Ly24oAsl/view?usp=sharing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com/)
-[![Min SDK](https://img.shields.io/badge/Min%20SDK-24-orange.svg)](https://developer.android.com/about/versions/nougat)
-
-[Features](#features) • [Download](#download) • [Setup](#setup) • [Usage](#usage) • [Hardware](#hardware) • [Contributing](#contributing)
+[![GitHub Stars](https://img.shields.io/github/stars/yantra-commons/Dab-Bot?style=social)](https://github.com/yantra-commons/Dab-Bot)
 
 </div>
-
----
-
-## 📱 Screenshots
-
-<div align="center">
-
-| Splash Screen | Device Discovery | Main Control |
-|:---:|:---:|:---:|
-| ![Splash](docs/screenshots/splash.png) | ![Discovery](docs/screenshots/discovery.png) | ![Control](docs/screenshots/control.png) |
-
-| Switch Control | Angle Configuration | Connected Status |
-|:---:|:---:|:---:|
-| ![Switch](docs/screenshots/switch.png) | ![Configure](docs/screenshots/configure.png) | ![Status](docs/screenshots/status.png) |
-
-</div>
-
----
-
-## 🌟 Features
-
-### 📱 **Mobile App**
-- **🔍 Automatic Device Discovery** - No MAC address needed, just select from paired devices
-- **🎚️ Simple Switch Control** - Toggle between OFF and ON positions
-- **⚙️ Configurable Angles** - Set custom servo positions (0-180°)
-- **💾 Settings Persistence** - Your angle configurations are saved automatically
-- **🎨 Apple-inspired Design** - Clean, minimal, iOS-style interface
-- **🚀 Splash Screen** - Professional branding on startup
-
-### 🤖 **Hardware Control**
-- **🎯 Precise Servo Control** - Accurate angle positioning
-- **📶 Bluetooth Connectivity** - Reliable wireless communication
-- **🔄 Smooth Movement** - Gradual servo transitions
-- **⚡ Real-time Response** - Instant command execution
-- **🛡️ Error Handling** - Robust connection management
 
 ---
 
 ## 🎯 What is DabBot?
 
-DabBot is an **open-source alternative to expensive fingerbot solutions** like SwitchBot. It uses an ESP32 microcontroller and a servo motor to physically press buttons, switches, and other controls remotely via a Bluetooth-connected Android app.
+DabBot is an **affordable, open-source alternative** to expensive smart button pushers (like SwitchBot). It physically presses buttons, flips switches, and controls devices that aren't "smart" - making them controllable from your phone.
 
-### Use Cases:
-- 💡 **Smart Home Automation** - Control non-smart devices
-- 🚪 **Physical Button Pressing** - Lights, coffee makers, fans
-- 🔘 **Switch Toggling** - Wall switches, appliances
-- 🎮 **Gaming** - Automated button presses
-- 🧪 **DIY Projects** - Custom automation solutions
+**Perfect for:**
+- 💡 Turning on/off lights that don't have smart switches
+- ☕ Starting your coffee maker from bed
+- 🔌 Controlling old appliances
+- 🎮 Automating repetitive button presses
+- 🏠 Budget-friendly smart home projects
 
 ---
 
-## 📥 Download
+## 📥 For End Users: Quick Install
 
-### **APK Download**
+### **1. Download the App**
+
+Click the button below to download DabBot for Android:
+
 [![Download APK](https://img.shields.io/badge/Download-Latest%20APK-brightgreen?style=for-the-badge&logo=android)](https://drive.google.com/file/d/1eNxBlgz88abVft-SN3fXUSu5Ly24oAsl/view?usp=sharing)
 
-**Current Version:** v2.0  
-**File Size:** ~5 MB  
-**Min Android:** 7.0 (API 24)  
-**Target Android:** 14 (API 34)
+**Requirements:**
+- Android 7.0 or higher
+- Bluetooth capability
+- ~5 MB storage space
 
-### **Installation Steps**
-1. Download the APK from the link above
-2. Enable "Install from Unknown Sources" in Android settings
-3. Open the downloaded APK file
-4. Tap "Install"
-5. Grant Bluetooth permissions when prompted
+### **2. Install the App**
 
----
+1. Open the downloaded `DabBot.apk` file
+2. If prompted, enable "Install from Unknown Sources"
+3. Tap **Install**
+4. Open the app and grant Bluetooth permissions
 
-## 🛠️ Hardware Setup
+### **3. Get the Hardware**
 
-### **Required Components**
+You'll need a DabBot device (ESP32 + servo motor). You can either:
 
-| Component | Specification | Quantity |
-|-----------|--------------|----------|
-| ESP32 Dev Board | Any ESP32 variant | 1 |
-| Servo Motor | SG90 or MG90S (9g) | 1 |
-| Jumper Wires | Male-to-Female | 3 |
-| USB Cable | Micro-USB or USB-C | 1 |
-| Power Supply | 5V, 1A minimum | 1 |
+**Option A: Buy Pre-made** *(Coming Soon)*
+- Pre-assembled and tested
+- Just plug and play
 
-### **Wiring Diagram**
+**Option B: Build Your Own** (~$10 in parts)
+- [See Hardware Guide](#-hardware-build-guide) below
+- Great for DIY enthusiasts
 
-```
-ESP32                    Servo Motor
------                    -----------
-GPIO 18 --------------->  Signal (Orange/Yellow)
-5V      --------------->  VCC (Red)
-GND     --------------->  GND (Brown/Black)
-```
+### **4. Start Using**
 
-### **Circuit Diagram**
-
-```
-                    ┌──────────────┐
-                    │    ESP32     │
-                    │              │
-      USB Power ────┤ USB          │
-                    │              │
-                    │         GPIO18├─────┐
-                    │              │      │
-                    │          5V  ├──┐   │
-                    │              │  │   │
-                    │         GND  ├┐ │   │
-                    └──────────────┘│ │   │
-                                    │ │   │
-                              ┌─────┴─┴───┴────┐
-                              │  Servo Motor   │
-                              │                │
-                              │  GND VCC  SIG  │
-                              └────────────────┘
-```
+1. **Pair** your DabBot in Android Bluetooth settings
+2. **Open** the DabBot app
+3. **Select** your device from the list
+4. **Toggle** the switch to control!
 
 ---
 
-## 🚀 Quick Start Guide
+## 🔧 Hardware Build Guide
 
-### **Step 1: Hardware Setup**
-1. Connect servo motor to ESP32 (see wiring diagram above)
-2. Upload firmware to ESP32 ([download here](ESP32_Firmware/DabBot_ESP32_Servo_Controller.ino))
-3. Power on ESP32
+### **What You Need** (~$10 total)
 
-### **Step 2: Pair Device**
-1. Open Android **Settings → Bluetooth**
-2. Look for "**DabBot**" or "**ESP32**"
-3. Tap to pair (no PIN required)
+| Item | Price | Where to Buy |
+|------|-------|--------------|
+| ESP32 Dev Board | ~$5 | Amazon, AliExpress, eBay |
+| SG90 Servo Motor | ~$2 | Amazon, Electronics stores |
+| Jumper Wires (3x) | ~$1 | Included with ESP32 |
+| USB Cable | ~$2 | Any micro-USB cable |
 
-### **Step 3: Install App**
-1. Download APK from link above
-2. Install on your Android device
-3. Grant Bluetooth permissions
+### **Assembly** (5 minutes)
 
-### **Step 4: Connect & Control**
-1. Open DabBot app
-2. Select your device from the list
-3. Tap to connect
-4. Toggle the switch to control!
-
----
-
-## 📖 Detailed Usage
-
-### **🔍 Device Discovery Screen**
-
-<img src="docs/screenshots/discovery.png" width="300" alt="Device Discovery">
-
-1. **Launch the app** - Shows splash screen, then device list
-2. **View paired devices** - All paired Bluetooth devices appear
-3. **Select your DabBot** - Tap on the device to connect
-4. **Refresh** - Tap refresh button if device doesn't appear
-
-### **🎛️ Main Control Screen**
-
-<img src="docs/screenshots/control.png" width="300" alt="Main Control">
-
-1. **View connection status** - Green indicator when connected
-2. **Toggle switch** - Move servo between OFF and ON positions
-3. **Check current angle** - Displays current position below switch
-4. **Configure angles** - Tap to customize OFF/ON positions
-
-### **⚙️ Angle Configuration**
-
-<img src="docs/screenshots/configure.png" width="300" alt="Configure Angles">
-
-1. **OFF Position** - Set the angle for switch OFF state (default: 0°)
-2. **ON Position** - Set the angle for switch ON state (default: 90°)
-3. **Adjust sliders** - Drag to set desired angles (0-180°)
-4. **Preview** - Large number shows selected angle in real-time
-5. **Save** - Tap "Save" to apply changes
-6. **Cancel** - Tap "Cancel" to discard changes
-
----
-
-## 🎨 Design Philosophy
-
-DabBot follows **Apple's iOS Human Interface Guidelines**:
-
-- ✨ **Clarity** - Clear visual hierarchy and legible text
-- 🎯 **Deference** - Content-focused with subtle UI elements
-- 🏔️ **Depth** - Layered design creates visual hierarchy
-
-### **Color Palette**
-- **Primary Blue** (#007AFF) - Actions, OFF position
-- **Green** (#34C759) - ON position, success states
-- **Gray Tones** (#8E8E93, #F2F2F7) - Secondary text and backgrounds
-- **White** (#FFFFFF) - Card backgrounds and primary surfaces
-
----
-
-## 🔧 Technical Details
-
-### **Android App Specifications**
-- **Language:** Java
-- **Min SDK:** 24 (Android 7.0 Nougat)
-- **Target SDK:** 34 (Android 14)
-- **Architecture:** Single Activity with multiple views
-- **Design Pattern:** MVC (Model-View-Controller)
-- **Libraries:** AndroidX, Material Design, RecyclerView
-
-### **ESP32 Firmware Specifications**
-- **Platform:** Arduino/ESP-IDF
-- **Protocol:** Bluetooth Serial (SPP)
-- **UUID:** 00001101-0000-1000-8000-00805F9B34FB
-- **Command Format:** `ANGLE:XXX\n` (XXX = 0-180)
-- **Baud Rate:** 115200
-
-### **Communication Protocol**
 ```
-Mobile App              ESP32
-----------              -----
-ANGLE:45\n  ───────►   Receive command
-            ◄───────    Parse angle value
-                        Move servo to 45°
-            ◄───────    Send confirmation
+Step 1: Connect 3 wires from ESP32 to Servo
+
+ESP32          →    Servo Motor
+─────               ───────────
+GPIO 18       →     Signal (Orange wire)
+5V            →     Power (Red wire)  
+GND           →     Ground (Brown wire)
+
+Step 2: Plug USB cable into ESP32
+Step 3: Done! 🎉
+```
+
+**Visual Guide:**
+```
+     ┌─────────┐
+     │  ESP32  │
+     │  ┌───┐  │
+USB──┤  │ □ │  ├──┐ GPIO 18 (Signal)
+     │  └───┘  ├──┤ 5V (Power)
+     └─────────┘  └ GND (Ground)
+          │ │ │
+          └─┴─┴──► Servo Motor
+```
+
+### **Upload Firmware** (One-time setup)
+
+1. **Download Arduino IDE** from https://www.arduino.cc/
+2. **Download firmware** from [ESP32_Firmware folder](ESP32_Firmware/)
+3. **Install ESP32 boards** in Arduino IDE
+4. **Upload** `DabBot_ESP32_Servo_Controller.ino` to your ESP32
+
+[Detailed firmware upload instructions →](docs/FIRMWARE_UPLOAD.md)
+
+---
+
+## 💡 How It Works
+
+1. **You toggle the switch** in the DabBot app
+2. **Phone sends Bluetooth command** to ESP32
+3. **Servo motor moves** to press the button
+4. **Your device turns on/off** 
+
+Simple as that! No internet required, no cloud services, no subscriptions.
+
+---
+
+## ✨ Features
+
+### **For Users:**
+- ✅ **Easy to use** - Just tap a switch
+- ✅ **No internet needed** - Works offline via Bluetooth
+- ✅ **Customizable** - Set exact button press angles
+- ✅ **Clean design** - Apple-inspired interface
+- ✅ **Free forever** - No subscriptions or in-app purchases
+
+### **For Developers:**
+- ✅ **100% Open Source** - Full source code available
+- ✅ **Well documented** - Easy to understand and modify
+- ✅ **Modern Android** - Material Design, AndroidX
+- ✅ **ESP32 Arduino** - Simple firmware, easy to hack
+- ✅ **MIT Licensed** - Use it however you want
+
+---
+
+## 🚀 Getting Started
+
+### **Option 1: I Just Want to Use It**
+
+1. Download the APK (link at top)
+2. Get/build the hardware
+3. Install and use!
+
+### **Option 2: I Want to Develop/Modify It**
+
+```bash
+# Clone the repository
+git clone https://github.com/yantra-commons/Dab-Bot.git
+cd Dab-Bot
+
+# Open the App folder in Android Studio
+# File → Open → Select "Dab-Bot/App"
+
+# Build and run
+# Connect your Android device
+# Click the green "Run" button
 ```
 
 ---
 
-## 📁 Project Structure
+## 🎨 App Features
 
-```
-DabBot/
-├── app/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/com/example/myapplication/
-│   │       │   ├── MainActivity.java
-│   │       │   ├── SplashActivity.java
-│   │       │   └── DeviceListAdapter.java
-│   │       ├── res/
-│   │       │   ├── layout/
-│   │       │   │   ├── activity_main.xml
-│   │       │   │   ├── activity_splash.xml
-│   │       │   │   └── item_device.xml
-│   │       │   ├── drawable/
-│   │       │   └── values/
-│   │       └── AndroidManifest.xml
-│   └── build.gradle.kts
-├── ESP32_Firmware/
-│   └── DabBot_ESP32_Servo_Controller.ino
-├── docs/
-│   ├── screenshots/
-│   ├── HARDWARE_ASSEMBLY.md
-│   └── USER_GUIDE.md
-├── LICENSE
-└── README.md
-```
+### **Device Discovery**
+- Automatically finds nearby DabBot devices
+- No need to enter MAC addresses
+- One-tap connection
+
+### **Simple Control**
+- Big, easy-to-use ON/OFF switch
+- Shows current position
+- Instant response
+
+### **Angle Configuration**
+- Customize OFF position (e.g., 0°)
+- Customize ON position (e.g., 90°)
+- Visual sliders with live preview
+- Settings saved automatically
+
+### **Clean Design**
+- iOS-inspired interface
+- Large, readable text
+- Smooth animations
+- Professional appearance
+
+---
+
+## 🛠️ Use Cases & Ideas
+
+### **Smart Home**
+- Control lights without rewiring
+- Turn on coffee maker in morning
+- Press garage door button remotely
+- Automate fan controls
+
+### **Accessibility**
+- Help people with limited mobility
+- Reach difficult switches
+- Control devices from bed
+
+### **Automation & Hacking**
+- Integrate with home automation systems
+- Control old electronics
+- Prototype smart home ideas
+- Test button-based interfaces
+
+### **Fun Projects**
+- Automated game controller
+- Remote doorbell ringer
+- Automated pet feeder trigger
+- Wake-up alarm turner-offer
+
+---
+
+## 📱 App Screenshots
+
+> **Note:** Screenshots coming soon! The app features:
+> - Clean splash screen with logo
+> - Device list for easy pairing
+> - Large switch control
+> - Angle configuration screen
+> - Connection status indicator
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+We welcome everyone - whether you're a user with feedback or a developer with code!
 
-### **Ways to Contribute**
-- 🐛 Report bugs
-- 💡 Suggest features
-- 📝 Improve documentation
-- 🎨 Design improvements
-- 🔧 Code contributions
-- 🌐 Translations
+### **As a User, You Can:**
+- 🐛 Report bugs you find
+- 💡 Suggest new features
+- 📝 Share how you use DabBot
+- ⭐ Star the project if you like it
 
-### **Development Setup**
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/dabbot.git
-   cd dabbot
-   ```
+### **As a Developer, You Can:**
+- 🔧 Fix bugs and improve code
+- 📚 Improve documentation
+- 🎨 Enhance the UI/UX
+- 🌐 Add translations
+- 🔌 Add new features
 
-2. **Open in Android Studio**
-   - File → Open
-   - Select the `DabBot` folder
+[Read Contributing Guidelines →](CONTRIBUTING.md)
 
-3. **Sync Gradle**
-   - File → Sync Project with Gradle Files
+---
 
-4. **Run on device**
-   - Build → Build APK
-   - Connect device and click Run
+## 📖 Documentation
 
-### **Code Style**
-- Follow standard Java naming conventions
-- Use 4 spaces for indentation
-- Add comments for complex logic
-- Keep methods focused and concise
+### **For Users:**
+- [App User Guide](docs/USER_GUIDE.md)
+- [Hardware Assembly](docs/HARDWARE_ASSEMBLY.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
+- [FAQ](docs/FAQ.md)
+
+### **For Developers:**
+- [Code Structure](docs/CODE_STRUCTURE.md)
+- [Building from Source](docs/BUILD_GUIDE.md)
+- [API Documentation](docs/API.md)
+- [Contributing Guide](CONTRIBUTING.md)
+
+---
+
+## 🔧 Technical Specs
+
+### **Mobile App**
+- **Platform:** Android 7.0+ (API 24+)
+- **Language:** Java
+- **Size:** ~5 MB
+- **Permissions:** Bluetooth only
+
+### **Hardware**
+- **Microcontroller:** ESP32 (any variant)
+- **Motor:** SG90 9g Servo
+- **Connection:** Bluetooth Classic (SPP)
+- **Power:** 5V via USB
+
+### **Communication**
+- **Protocol:** Bluetooth Serial
+- **Range:** ~10 meters (30 feet)
+- **Latency:** <100ms response time
+- **Command Format:** Simple text commands
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is **free and open source** under the MIT License.
 
 ```
-MIT License
+MIT License - You can:
+✅ Use commercially
+✅ Modify the code
+✅ Distribute
+✅ Sell derivative products
+✅ Use privately
 
-Copyright (c) 2024 DabBot Open Source Community
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+❌ Just include the license and don't hold us liable
 ```
+
+[Full License Text →](LICENSE)
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Credits
 
-- **ESP32 Community** - For excellent hardware and libraries
-- **Android Open Source Project** - For the mobile platform
-- **Material Design** - For design guidelines
-- **Contributors** - Everyone who has contributed to this project
+**Created by the DabBot Community**
+
+- Thanks to the **ESP32 community** for great hardware
+- Thanks to **Android Open Source Project**
+- Inspired by SwitchBot and similar products
+- Built with ❤️ by makers, for makers
 
 ---
 
-## 📞 Support & Community
+## 💬 Support & Community
 
-### **Get Help**
-- 📖 [Documentation](docs/)
-- 💬 [GitHub Discussions](https://github.com/yourusername/dabbot/discussions)
-- 🐛 [Report Issues](https://github.com/yourusername/dabbot/issues)
-- 📧 [Email Support](mailto:support@dabbot.org)
+### **Need Help?**
+- 🐛 [Report a Bug](https://github.com/yantra-commons/Dab-Bot/issues)
+- 💡 [Request a Feature](https://github.com/yantra-commons/Dab-Bot/issues)
+- 💬 [Ask Questions](https://github.com/yantra-commons/Dab-Bot/discussions)
 
-### **Follow Us**
-- 🐦 Twitter: [@DabBotProject](https://twitter.com/dabbotproject)
-- 📘 Facebook: [DabBot Community](https://facebook.com/dabbot)
-- 📷 Instagram: [@dabbot.official](https://instagram.com/dabbot.official)
+### **Stay Connected**
+- ⭐ [Star on GitHub](https://github.com/yantra-commons/Dab-Bot)
+- 👀 [Watch for Updates](https://github.com/yantra-commons/Dab-Bot)
+- 🍴 [Fork the Project](https://github.com/yantra-commons/Dab-Bot/fork)
 
 ---
 
 ## 🗺️ Roadmap
 
-### **Version 2.1** (Coming Soon)
+### **Coming Soon**
 - [ ] Multiple device support
-- [ ] Scheduled actions
-- [ ] Widget support
-- [ ] Voice control integration
-
-### **Version 2.5** (Future)
-- [ ] MQTT integration
-- [ ] Home Assistant integration
-- [ ] Battery level monitoring
+- [ ] Scheduled actions/timers
+- [ ] Home automation integrations
 - [ ] iOS app
 
-### **Version 3.0** (Long-term)
-- [ ] Web interface
-- [ ] Cloud sync
-- [ ] Multiple servo control
-- [ ] Automation recipes
+### **Ideas for Future**
+- [ ] Voice control (Google Assistant, Alexa)
+- [ ] MQTT/WiFi support
+- [ ] Web dashboard
+- [ ] Pre-built hardware kits
+
+Want to help? [See our Contributing Guide](CONTRIBUTING.md)!
 
 ---
 
-## ⭐ Star History
+## 📊 Project Stats
 
-If you find this project useful, please consider giving it a star!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/dabbot&type=Date)](https://star-history.com/#yourusername/dabbot&Date)
-
----
-
-## 💖 Sponsor This Project
-
-If you'd like to support the development of DabBot:
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/dabbot)
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue?style=for-the-badge&logo=paypal)](https://paypal.me/dabbot)
+- **Started:** January 2024
+- **Current Version:** 2.0
+- **Contributors:** Open to all!
+- **Cost to Use:** $0 (Free forever)
+- **Hardware Cost:** ~$10 DIY
+- **Lines of Code:** ~2,000
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by the DabBot Open Source Community**
+## ⭐ Show Your Support
+
+If you find DabBot useful, please consider giving it a star!
+
+It helps others discover the project and motivates us to keep improving it.
+
+[![GitHub Stars](https://img.shields.io/github/stars/yantra-commons/Dab-Bot?style=social)](https://github.com/yantra-commons/Dab-Bot)
+
+---
+
+**Made with ❤️ by makers, for makers**
+
+Licensed under MIT • Free Forever • No Tracking • No Ads
 
 [⬆ Back to Top](#-dabbot---smart-switch-controller)
 
